@@ -6,23 +6,20 @@ const nextConfig = {
     remotePatterns: [],
   },
   webpack: (config) => {
+    // Add support for glTF/GLB files
     config.module.rules.push({
       test: /\.(glb|gltf)$/,
-      type: 'asset/resource'
+      type: 'asset/resource',
     });
-    return config;
-  },
-  // Add this to handle case sensitivity
-  future: {
-    webpack5: true,
-  },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+
+    // Resolve issues with Node.js-specific modules
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
     };
+
     return config;
   },
-}
+};
 
 module.exports = nextConfig;
