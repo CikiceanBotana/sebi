@@ -1,12 +1,15 @@
-import type { NextConfig } from "next";
+// @ts-check
 
-const nextConfig: NextConfig = {
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
   images: {
     unoptimized: true,
     domains: [],
     remotePatterns: [],
   },
-  webpack: (config) => {
+  webpack: function (config) {
     config.module.rules.push({
       test: /\.(glb|gltf)$/,
       type: 'asset/resource'
@@ -15,4 +18,4 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default nextConfig;
+module.exports = nextConfig;
