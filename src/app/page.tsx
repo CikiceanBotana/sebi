@@ -1,11 +1,13 @@
+import { readdir } from 'fs/promises';
+import { join } from 'path';
+
+// Updated imports to match exact file names
 import Header from "@/components/header/header";
 import PageLayout from "@/components/layout/page-layout";
 import HeroSection from "@/components/hero/hero-section";
 import AboutSection from "@/components/about/about-section";
 import ProductCardsSection from "@/components/card-home/card-home";
 import ProcessSection from "@/components/procesul_nostru/procesul-nostru";
-import { readdir } from 'fs/promises';
-import { join } from 'path';
 import Gallery from "@/components/galerie/galerie";
 import TestimonialsCarousel from '@/components/testimoniale/testimoniale';
 import Footer from "@/components/footer/footer";
@@ -41,7 +43,7 @@ export default async function Home() {
           <TestimonialsCarousel />
         </div>
       </main>
-      <Footer /> {/* Add the Footer component here */}
+      <Footer />
     </PageLayout>
   );
 }
