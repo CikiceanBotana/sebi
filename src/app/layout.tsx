@@ -1,16 +1,28 @@
 import type { Metadata } from "next";
+import { Montserrat, Lacquer } from 'next/font/google';
 import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+// Load Montserrat
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+// Load Lacquer
+const lacquer = Lacquer({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-lacquer',
+});
+
+// Load Faculty Glyphic locally
+const facultyGlyphic = localFont({
+  src: './fonts/FacultyGlyphic.ttf',
+  variable: '--font-faculty',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.variable} ${lacquer.variable} ${facultyGlyphic.variable} antialiased`}
       >
         {children}
       </body>

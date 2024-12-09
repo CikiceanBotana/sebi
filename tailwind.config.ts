@@ -11,6 +11,20 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: {
+          base: '#17012C',
+          gradient: '#2A235A',
+        },
+      },
+      fontFamily: {
+        lacquer: ["var(--font-lacquer)"],
+        montserrat: ["var(--font-montserrat)"],
+        faculty: ["var(--font-faculty)"],
+      },
+      fontWeight: {
+        normal: "400",
+        medium: "500",
+        bold: "700",
       },
     },
   },
