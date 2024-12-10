@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    unoptimized: true,
-    domains: [],
-    remotePatterns: [],
+  reactStrictMode: true,
+  swcMinify: true,
+  experimental: {
+    appDir: true
   },
   webpack: (config) => {
     // Add support for glTF/GLB files
