@@ -1,0 +1,14 @@
+import Header from "@/components/header/header";
+import PageLayout from "@/components/layout/page-layout";
+import HeroSection from "@/components/hero/hero-section";
+
+export default function Home() {
+  return (
+    <PageLayout>
+      <Header />
+      <div className="relative min-h-screen">
+        <HeroSection />
+      </div>
+    </PageLayout>
+  );
+}
