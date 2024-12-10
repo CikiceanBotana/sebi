@@ -18,6 +18,12 @@ const nextConfig = {
       fs: false,
     };
 
+    // Add path alias resolution
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': require('path').resolve(__dirname, './src')
+    };
+
     return config;
   },
 };

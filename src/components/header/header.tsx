@@ -1,20 +1,31 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 const AudioVisualizer = dynamic(() => import('./AudioVisualizer'), {
-  ssr: false
+  ssr: false,
+  loading: () => (
+    <div className="w-48 h-24 flex items-center justify-center">
+      <div className="text-[#FAFAFA] opacity-50">Loading...</div>
+    </div>
+  )
 });
 
-const navItems = [
+interface NavItem {
+  name: string;
+  path: string;
+}
+
+const navItems: NavItem[] = [
   { name: "Acasa", path: "/" },
   { name: "Magazin", path: "/magazin" },
   { name: "Despre noi", path: "/despre-noi" },
   { name: "Contact", path: "/contact" },
 ];
 
-export default function Header() {
+const Header: React.FC = () => {
   return (
     <header className="relative w-full bg-transparent">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +35,7 @@ export default function Header() {
             <span className="text-[#FAFAFA] text-2xl font-lacquer">LOGO</span>
           </div>
 
-          {/* Audio Visualizer Section - Positioned absolutely more to the left */}
+          {/* Audio Visualizer Section */}
           <div className="hidden sm:block absolute left-1/3 transform -translate-x-1/2 z-10">
             <div className="w-48 h-24 flex items-center justify-center">
               <AudioVisualizer />
@@ -47,7 +58,10 @@ export default function Header() {
                 </Link>
               ))}
             </div>
-            <button className="text-[#FAFAFA] px-4 py-2 rounded-md border border-[#FAFAFA] font-faculty bg-[#9F1E07] hover:bg-[#FAFAFA] hover:text-[#9F1E07] transition-colors duration-200">
+            <button 
+              className="text-[#FAFAFA] px-4 py-2 rounded-md border border-[#FAFAFA] font-faculty bg-[#9F1E07] hover:bg-[#FAFAFA] hover:text-[#9F1E07] transition-colors duration-200"
+              onClick={() => {/* Add your contact button handler here */}}
+            >
               Contact Us
             </button>
           </div>
@@ -55,4 +69,6 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};
+
+export default Header;

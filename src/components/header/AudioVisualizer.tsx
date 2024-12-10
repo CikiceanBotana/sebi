@@ -1,10 +1,12 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 
 interface AudioVisualizerProps {
   onBassUpdate?: (bassValue: number) => void;
 }
 
-const AudioVisualizer = ({ onBassUpdate }: AudioVisualizerProps) => {
+const AudioVisualizer: React.FC<AudioVisualizerProps> = ({ onBassUpdate }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
@@ -21,7 +23,7 @@ const AudioVisualizer = ({ onBassUpdate }: AudioVisualizerProps) => {
         audio.loop = true;
         audioRef.current = audio;
 
-        const audioContext = new AudioContext();
+        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
         audioContextRef.current = audioContext;
 
         const analyser = audioContext.createAnalyser();
@@ -33,8 +35,8 @@ const AudioVisualizer = ({ onBassUpdate }: AudioVisualizerProps) => {
         analyser.connect(audioContext.destination);
         audioSourceRef.current = source;
 
-        await new Promise((resolve) => {
-          audio.addEventListener('loadeddata', resolve);
+        await new Promise<void>((resolve) => {
+          audio.addEventListener('loadeddata', () => resolve());
         });
 
         setIsInitialized(true);
@@ -78,11 +80,10 @@ const AudioVisualizer = ({ onBassUpdate }: AudioVisualizerProps) => {
       
       analyser.getByteFrequencyData(dataArray);
       
-      // Calculate bass average (first few frequency bins)
       if (onBassUpdate) {
-        const bassFrequencies = dataArray.slice(0, 4); // First 4 frequency bins
+        const bassFrequencies = dataArray.slice(0, 4);
         const bassAverage = bassFrequencies.reduce((a, b) => a + b, 0) / bassFrequencies.length;
-        const normalizedBass = bassAverage / 255; // Normalize to 0-1 range
+        const normalizedBass = bassAverage / 255;
         onBassUpdate(normalizedBass);
       }
       
@@ -128,7 +129,7 @@ const AudioVisualizer = ({ onBassUpdate }: AudioVisualizerProps) => {
         cancelAnimationFrame(animationRef.current);
       }
       if (onBassUpdate) {
-        onBassUpdate(0); // Reset bass value when paused
+        onBassUpdate(0);
       }
     }
     
