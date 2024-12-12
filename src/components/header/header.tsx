@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 const AudioVisualizer = dynamic(() => import('./AudioVisualizer'), {
@@ -31,8 +32,18 @@ const Header: React.FC = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo Section */}
-          <div className="flex-shrink-0 z-20 relative">
-            <span className="text-[#FAFAFA] text-2xl font-lacquer">LOGO</span>
+          <div className="flex-shrink-0 z-20 relative -ml-28">
+            <Link href="/" className="block">
+              <div className="relative w-96 h-32">
+                <Image
+                  src="/logo2.png"
+                  alt="Arta Din Cioburi Ratacite Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </Link>
           </div>
 
           {/* Audio Visualizer Section */}
