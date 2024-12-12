@@ -63,3 +63,13 @@ body {
   stroke-dashoffset: 1000;
   animation: draw 2s ease forwards;
 }
+
+@layer utilities {
+  .clip-path-circle-sm {
+    clip-path: circle(150px at 80% 20%);
+  }
+  
+  .clip-path-circle-lg {
+    clip-path: circle(300px at 80% -20%);
+  }
+}

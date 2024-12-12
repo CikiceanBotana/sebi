@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  experimental: {
-    appDir: true
-  },
+  // Remove swcMinify as it's enabled by default in newer versions
+  // Remove experimental.appDir as it's now the default in Next.js 13+
   webpack: (config) => {
     // Add support for glTF/GLB files
     config.module.rules.push({
