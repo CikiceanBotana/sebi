@@ -5,6 +5,13 @@ import Footer from "@/components/footer/footer";
 import { redirect } from 'next/navigation';
 import { ProductPageClient } from "./ProductPageClient";
 
+// Define a proper type for page props
+interface ProductDetailPageProps {
+  params: {
+    id: string;
+  };
+}
+
 async function getProduct(id: string) {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_DIRECTUS_URL}/items/store_items/${id}`, {
@@ -29,7 +36,7 @@ async function getProduct(id: string) {
   }
 }
 
-export default async function ProductDetailPage({ params }: { params: { id: string } }) {
+export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const product = await getProduct(params.id);
 
   if (!product) {
