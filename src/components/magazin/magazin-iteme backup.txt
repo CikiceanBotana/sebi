@@ -1,0 +1,86 @@
+'use client';
+import React from 'react';
+
+interface StoreItemProps {
+  title: string;
+  price: number;
+  imageUrl: string;
+  backgroundImageUrl?: string;
+}
+
+const StoreItem: React.FC<StoreItemProps> = ({ 
+  title, 
+  price, 
+  imageUrl,
+  backgroundImageUrl = '/produse/Grey-Goose-logo.webp'
+}) => {
+  return (
+    <div className="container overflow-hidden">
+      <div className="relative group">
+        <div className="card w-full h-[450px] bg-[#2D1A4A] rounded-2xl overflow-hidden
+          before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full 
+          before:bg-gradient-to-r before:from-[#047A6E] before:to-[#9F1E07]
+          before:[clip-path:circle(150px_at_80%_20%)]
+          before:transition-[clip-path] before:duration-500 before:ease-in-out
+          hover:before:[clip-path:circle(300px_at_80%_-20%)]">
+          
+          {/* Background image replacing the text */}
+          <div className="absolute top-[20%] -left-[50%] w-[600px] h-[300px] opacity-[0.10]">
+            <img 
+              src={backgroundImageUrl}
+              alt="Background"
+              className="w-full h-full object-contain filter contrast-200"
+            />
+          </div>
+          
+          {/* Image container - Adjusted hover translation to be more centered */}
+          <div className="absolute top-1/2 -translate-y-1/2 w-full h-full transition-all duration-500 z-10
+            group-hover:top-[30%] group-hover:-translate-y-1/2">
+            <img 
+              src={imageUrl} 
+              alt={title}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px]"
+            />
+          </div>
+          
+          {/* Content section */}
+          <div className="absolute bottom-0 w-full h-[90px] text-center transition-all duration-1000 z-20
+            group-hover:h-[180px]">
+            <h2 className="text-[#FAFAFA] font-lacquer text-xl font-semibold tracking-wider mb-2">
+              {title}
+            </h2>
+            
+            {/* Size selection */}
+            <div className="flex justify-center items-center px-5 py-1 opacity-0 invisible transition-all duration-500
+              group-hover:opacity-100 group-hover:visible group-hover:delay-500">
+              <h3 className="text-[#FAFAFA] font-montserrat text-sm uppercase tracking-wider mr-2">
+                Marime: <span className="normal-case">100/150</span>
+              </h3>
+            </div>
+            
+            {/* Bottle Brand info */}
+            <div className="flex justify-center items-center px-5 py-1 opacity-0 invisible transition-all duration-500
+              group-hover:opacity-100 group-hover:visible group-hover:delay-600">
+              <h3 className="text-[#FAFAFA] font-montserrat text-sm uppercase tracking-wider mr-2">
+                Sticla: <span className="normal-case">Jack Daniels</span>
+              </h3>
+            </div>
+            
+            {/* Price and buy button */}
+            <div className="mt-2 opacity-0 translate-y-12 transition-all duration-500
+              group-hover:opacity-100 group-hover:translate-y-0 group-hover:delay-700">
+              <p className="text-[#FAFAFA] font-montserrat mb-1">{price} RON</p>
+              <button className="bg-[#9F1E07] px-4 py-1.5 rounded-lg text-[#FAFAFA] font-faculty 
+                hover:bg-[#FAFAFA] hover:text-[#9F1E07] transition-colors duration-200 
+                border border-[#FAFAFA] hover:border-[#9F1E07]">
+                Cumpara
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default StoreItem;

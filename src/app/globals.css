@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-lacquer: 'Lacquer', display;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-faculty: 'Faculty Glyphic', sans-serif;
+  --font-oswald: 'Oswald', sans-serif;
+  --font-eater: 'Eater', 'sans-serif';
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-montserrat);
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-lacquer);
+  }
+  
+  p, nav {
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+  }
+  
+  button {
+    font-family: var(--font-faculty) !important;
+  }
+}
+
+@layer utilities {
+  .font-lacquer {
+    font-family: var(--font-lacquer) !important;
+  }
+  
+  .font-montserrat {
+    font-family: var(--font-montserrat) !important;
+  }
+  
+  .font-faculty {
+    font-family: var(--font-faculty) !important;
+  }
+
+  .font-oswald{
+    font-family: var(--font-oswald) !important;
+  }
+
+  .font-eater{
+    font-family: var(--font-eater) !important;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2s ease forwards;
+}
+
+@layer utilities {
+  .clip-path-circle-sm {
+    clip-path: circle(150px at 80% 20%);
+  }
+  
+  .clip-path-circle-lg {
+    clip-path: circle(300px at 80% -20%);
+  }
+}

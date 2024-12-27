@@ -1,0 +1,57 @@
+{
+  "name": "sippin-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:frontend": "next dev",
+    "build": "next build",
+    "start": "node_modules/next/dist/bin/next start -p $PORT",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.120.4",
+    "@react-three/fiber": "8.15.13",
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.3.0",
+    "@types/axios": "^0.14.4",
+    "axios": "^1.7.9",
+    "framer-motion": "^11.15.0",
+    "lucide-react": "0.263.1",
+    "next": "^15.0.4",
+    "qs": "^6.13.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "recharts": "2.14.1",
+    "stripe": "^17.4.0",
+    "three": "0.159.0"
+  },
+  "devDependencies": {
+    "@types/debounce": "1.2.4",
+    "@types/node": "20.17.9",
+    "@types/qs": "^6.9.17",
+    "@types/react": "18.2.47",
+    "@types/react-dom": "18.2.18",
+    "@types/react-reconciler": "0.28.8",
+    "@types/three": "0.159.0",
+    "eslint": "8.56.0",
+    "eslint-config-next": "13.5.7",
+    "postcss": "8",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.3.3"
+  },
+  "overrides": {
+    "@react-three/drei": {
+      "react": "18.2.0",
+      "react-dom": "18.2.0"
+    },
+    "three-mesh-bvh": "0.8.0"
+  },
+  "resolutions": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
